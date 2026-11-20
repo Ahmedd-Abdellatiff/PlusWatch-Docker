@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Website Details</h2>
+
+<p>Name: {{ website.name }}</p>
+
+<p>URL: {{ website.url }}</p>
+
+<p>Status: {{ latest_check.status if latest_check else "Pending" }}</p>
+
+<p>Uptime: {{ uptime }}%</p>
+
+<h3>Monitoring History</h3>
+
+{% for check in checks %}
+    <p>
+        {{ check.status }} - {{ check.response_time }} ms
+    </p>
+{% endfor %}
+
+<a href="/">Back to Dashboard</a>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Pulse Watch Dashboard</h2>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Name</th>
+        <th>URL</th>
+        <th>Status</th>
+        <th>Details</th>
+    </tr>
+
+    {% for item in dashboard_data %}
+    <tr>
+        <td>{{ item.website.name }}</td>
+        <td>{{ item.website.url }}</td>
+        <td>{{ item.latest_check.status if item.latest_check else "Pending" }}</td>
+        <td>
+            <a href="/website/{{ item.website.id }}">View</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
