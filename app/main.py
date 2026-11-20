@@ -77,9 +77,9 @@ def home(request: Request, db: Session = Depends(get_db)):
         })
 
     return templates.TemplateResponse(
-        "index.html",
-        {
-            "request": request,
+        request=request,
+        name="index.html",
+        context={
             "dashboard_data": dashboard_data
         }
     )
@@ -111,9 +111,9 @@ def website_details(
     uptime = calculate_uptime(db, website_id)
 
     return templates.TemplateResponse(
-        "website.html",
-        {
-            "request": request,
+        request=request,
+        name="website.html",
+        context={
             "website": website,
             "checks": checks,
             "latest_check": latest_check,
